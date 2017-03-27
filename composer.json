@@ -1,0 +1,19 @@
+{
+  "name": "goalgorilla/social_kpi_lite",
+  "description": "Drupal module, that implements KPI Analytics for Open Social distribution.",
+  "type": "drupal-module",
+  "keywords": [
+    "Open Social",
+    "Drupal",
+    "Module"
+  ],
+  "license": "GPL-2.0+",
+  "homepage": "https://github.com/goalgorilla/social_kpi_lite",
+  "minimum-stability": "dev",
+  "require": {
+    "composer/installers": "^1.0"
+  },
+  "extra": {
+    "installer-name": "social_kpi_lite"
+  }
+}
