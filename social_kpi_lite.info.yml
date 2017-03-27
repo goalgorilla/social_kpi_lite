@@ -1,0 +1,7 @@
+name: Social KPI (Lite)
+type: module
+description: Implements KPI Analytics for Open Social distribution.
+core: 8.x
+dependencies:
+  - kpi_analytics
+package: Social
