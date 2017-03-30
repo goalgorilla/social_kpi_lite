@@ -4,25 +4,27 @@
  * Implements hook_install().
  */
 function social_kpi_lite_install() {
-  _social_kpi_lite_create_show_active_users_block();
+  $blocks = [
+    'social_kpi_lite_users_active',
+  ];
+  _social_kpi_lite_create_blocks($blocks);
 }
 
 /**
- * Create the active users block.
+ * Create block content.
  */
-function _social_kpi_lite_create_show_active_users_block() {
+function _social_kpi_lite_create_blocks($blocks) {
   $path = drupal_get_path('module', 'social_kpi_lite');
-  /** @var \Drupal\social_kpi_lite\BlockContentCreator $block_content_creator */
-  $block_content_creator = \Drupal::service('social_kpi_lite.block_content_creator');
-  $block_content_creator->setSource($path . '/content/block_content', 'show_active_users_kpi_analytics_block');
+  $block_content_path = "{$path}/content/block_content";
+  $block_path = "{$path}/content/block";
 
-  if ($block_content_creator->create()) {
-    $instances = [
-      'show_active_users_kpi_analytics_block',
-    ];
+  foreach ($blocks as $block_id) {
+    /** @var \Drupal\social_kpi_lite\BlockContentCreator $block_content_creator */
+    $block_content_creator = \Drupal::service('social_kpi_lite.block_content_creator');
+    $block_content_creator->setSource($block_content_path, $block_id);
 
-    foreach ($instances as $id) {
-      $block_content_creator->createBlockInstance($path . '/content/block', $id);
+    if ($block_content_creator->create()) {
+      $block_content_creator->createBlockInstance($block_path, $block_id);
     }
   }
 }

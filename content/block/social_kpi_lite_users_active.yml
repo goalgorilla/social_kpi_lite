@@ -1,5 +1,5 @@
 region: content_top
-id: show_active_users_kpi_analytics_block
+id: social_kpi_lite_users_active
 theme: null
 plugin: block_content:04538321-c195-4327-bae0-e82365382836
 weight: null
@@ -10,7 +10,7 @@ visibility:
     negate: false
     context_mapping: {}
 settings:
-  id: show_active_users_kpi_analytics_block
+  id: social_kpi_lite_users_active
   label: ''
   provider: block_content
   label_display: false
