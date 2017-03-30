@@ -1,0 +1,35 @@
+values:
+  type: kpi_analytics
+  info: 'Show all active users in a line graph as KPI Analytics'
+  uuid: 04538321-c195-4327-bae0-e82365382836
+fields:
+  body:
+    value: '<h3>Active users on the platform that participated in the community</p>'
+    format: full_html
+  field_kpi_datasource: drupal_kpi_datasource
+  field_kpi_query: >
+    SELECT nfd.uid,
+           nfd.created
+    FROM   node_field_data nfd
+    UNION ALL
+    SELECT cfd.uid,
+           cfd.created
+    FROM   comment_field_data cfd
+    UNION ALL
+    SELECT pfd.user_id,
+           pfd.created
+    FROM   post_field_data pfd
+    UNION ALL
+    SELECT eefd.user_id,
+           eefd.created
+    FROM   event_enrollment_field_data eefd
+    UNION ALL
+    SELECT gfd.uid,
+           gfd.created
+    FROM   groups_field_data gfd;
+  field_kpi_data_formatter:
+    -
+      value: datetime_kpi_data_formatter
+    -
+      value: sum_kpi_data_formatter
+  field_kpi_visualization: morris_line_graph_kpi_visualization

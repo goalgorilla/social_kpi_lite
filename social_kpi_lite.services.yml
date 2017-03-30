@@ -1,0 +1,8 @@
+services:
+  social_kpi_lite.block_creator:
+    class: \Drupal\social_kpi_lite\BlockCreator
+    arguments: ['@entity_type.manager', '@config.factory']
+  social_kpi_lite.block_content_creator:
+    class: \Drupal\social_kpi_lite\BlockContentCreator
+    arguments: ['@entity_type.manager', '@social_kpi_lite.block_creator']
+

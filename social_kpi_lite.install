@@ -1,112 +1,28 @@
 <?php
 
-use Drupal\Core\Field\FieldItemList;
-use Drupal\block\Entity\Block;
-
 /**
  * Implements hook_install().
  */
 function social_kpi_lite_install() {
-  _social_kpi_lite_create_show_active_users_block_content();
   _social_kpi_lite_create_show_active_users_block();
 }
 
 /**
  * Create the active users block.
  */
-function _social_kpi_lite_create_show_active_users_block_content() {
-  $block = \Drupal::entityTypeManager()
-    ->getStorage('block_content')
-    ->create(array(
-      'type' => 'kpi_analytics',
-      'info' => 'Show all active users in a line graph as KPI Analytics',
-      'uuid' => '04538321-c195-4327-bae0-e82365382836',
-    ));
-  $block->body = array(
-    'value' => '<h3>Active users on the platform that participated in the community</p>',
-    'format' => 'full_html',
-  );
-
-  $block->field_kpi_datasource = 'drupal_kpi_datasource';
-
-  $block->field_kpi_query = 'SELECT nfd.uid,nfd.created FROM node_field_data nfd
-UNION ALL
-SELECT cfd.uid,cfd.created FROM comment_field_data cfd
-UNION ALL
-SELECT pfd.user_id,pfd.created FROM post_field_data pfd
-UNION ALL
-SELECT eefd.user_id,eefd.created FROM event_enrollment_field_data eefd
-UNION ALL
-SELECT gfd.uid,gfd.created FROM groups_field_data gfd;';
-
-  // Set the links.
-  $data_formatters = array(
-    array(
-      'value' => 'datetime_kpi_data_formatter',
-    ),
-    array(
-      'value' => 'sum_kpi_data_formatter',
-    ),
-  );
-  $itemList = new FieldItemList($block->field_kpi_data_formatter->getFieldDefinition());
-  $itemList->setValue($data_formatters);
-  $block->field_kpi_data_formatter = $itemList;
-
-  $block->field_kpi_visualization = 'morris_line_graph_kpi_visualization';
-  $block->save();
-}
-
 function _social_kpi_lite_create_show_active_users_block() {
-  $config = \Drupal::configFactory();
-  // Do not add a new block if it already exists.
-  $block = Block::load('show_active_users_kpi_analytics_block');
-  if (!isset($block)) {
-    $visibility = array(
-      'request_path' => array(
-        'id' => 'request_path',
-        'pages' => '/admin/reports/social-kpi',
-        'negate' => FALSE,
-        'context_mapping' => array(),
-      ),
-    );
+  $path = drupal_get_path('module', 'social_kpi_lite');
+  /** @var \Drupal\social_kpi_lite\BlockContentCreator $block_content_creator */
+  $block_content_creator = \Drupal::service('social_kpi_lite.block_content_creator');
+  $block_content_creator->setSource($path . '/content/block_content', 'show_active_users_kpi_analytics_block');
 
-    $settings = array(
-      'plugin' => 'block_content:04538321-c195-4327-bae0-e82365382836',
-      'region' => 'content_top',
-      'id' => 'show_active_users_kpi_analytics_block',
-      'theme' => $config->get('system.theme')->get('default'),
-      'label' => '',
-      'visibility' => $visibility,
-      'weight' => NULL,
-    );
+  if ($block_content_creator->create()) {
+    $instances = [
+      'show_active_users_kpi_analytics_block',
+    ];
 
-    $values = [];
-    foreach (array(
-               'region',
-               'id',
-               'theme',
-               'plugin',
-               'weight',
-               'visibility'
-             ) as $key) {
-      $values[$key] = $settings[$key];
-      // Remove extra values that do not belong in the settings array.
-      unset($settings[$key]);
+    foreach ($instances as $id) {
+      $block_content_creator->createBlockInstance($path . '/content/block', $id);
     }
-    foreach ($values['visibility'] as $id => $visibility) {
-      $values['visibility'][$id]['id'] = $id;
-    }
-
-    $settings = array(
-      'id' => 'show_active_users_kpi_analytics_block',
-      'label' => '',
-      'provider' => 'block_content',
-      'label_display' => '0',
-      'views_label' => '',
-    );
-    $values['settings'] = $settings;
-    $block = Block::create($values);
-
-    $block->save();
   }
 }
