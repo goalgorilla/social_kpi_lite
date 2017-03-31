@@ -4,7 +4,7 @@ values:
   uuid: b2b84dd7-a220-4837-8e14-aac24d677cf6
 fields:
   body:
-    value: '<h3>Created posts on the platform</p>'
+    value: '<h3>Activity in posts</p>'
     format: full_html
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >
