@@ -6,6 +6,7 @@
 function social_kpi_lite_install() {
   $blocks = [
     'social_kpi_lite_users_active',
+    'social_kpi_lite_comments_created',
   ];
   _social_kpi_lite_create_blocks($blocks);
 }
