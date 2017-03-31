@@ -1,0 +1,17 @@
+region: content_top
+id: social_kpi_lite_posts_created
+theme: null
+plugin: block_content:b2b84dd7-a220-4837-8e14-aac24d677cf6
+weight: 1
+visibility:
+  request_path:
+    id: request_path
+    pages: /admin/reports/social-kpi
+    negate: false
+    context_mapping: {}
+settings:
+  id: social_kpi_lite_posts_created
+  label: ''
+  provider: block_content
+  label_display: false
+  views_label: ''
