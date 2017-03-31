@@ -65,3 +65,8 @@ fields:
     -
       value: year_timeline_kpi_data_formatter
   field_kpi_visualization: morris_line_graph_kpi_visualization
+  field_kpi_chart_labels:
+    -
+      value: 'Active users'
+    -
+      value: 'All users'
