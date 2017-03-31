@@ -1,8 +1,8 @@
-region: content_top
+region: content
 id: social_kpi_lite_comments_created
 theme: null
 plugin: block_content:86ad925a-0513-4881-bfe4-6a9be1a01550
-weight: 2
+weight: null
 visibility:
   request_path:
     id: request_path

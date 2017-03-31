@@ -4,7 +4,7 @@ values:
   uuid: 86ad925a-0513-4881-bfe4-6a9be1a01550
 fields:
   body:
-    value: '<h3>Posted comments on the platform</p>'
+    value: '<h3>Activity in comments</p>'
     format: full_html
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >
