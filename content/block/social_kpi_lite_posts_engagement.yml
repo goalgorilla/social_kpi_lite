@@ -1,0 +1,17 @@
+region: content
+id: social_kpi_lite_posts_engagement
+theme: null
+plugin: block_content:5066661e-87cd-479f-8eb6-9a3583a5931d
+weight: null
+visibility:
+  request_path:
+    id: request_path
+    pages: /admin/reports/social-kpi
+    negate: false
+    context_mapping: {}
+settings:
+  id: social_kpi_lite_posts_engagement
+  label: ''
+  provider: block_content
+  label_display: false
+  views_label: ''
