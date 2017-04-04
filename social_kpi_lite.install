@@ -5,10 +5,11 @@
  */
 function social_kpi_lite_install() {
   $blocks = [
-    'social_kpi_lite_users_active',
+    'social_kpi_lite_events_created',
     'social_kpi_lite_nodes_engagement',
-    'social_kpi_lite_posts_engagement',
     'social_kpi_lite_posts_created',
+    'social_kpi_lite_posts_engagement',
+    'social_kpi_lite_users_active',
   ];
   _social_kpi_lite_create_blocks($blocks);
 }
