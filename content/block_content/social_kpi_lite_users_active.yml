@@ -1,0 +1,69 @@
+values:
+  type: kpi_analytics
+  info: 'Show all active users in a line graph as KPI Analytics'
+  uuid: 04538321-c195-4327-bae0-e82365382836
+fields:
+  body:
+    value: '<h3>Active users on the platform that participated in the community</p>'
+    format: full_html
+  field_kpi_datasource: drupal_kpi_datasource
+  field_kpi_query: >
+    SELECT created, COUNT(DISTINCT uid) AS active,
+    (
+      SELECT COUNT(ufd.uid)
+      FROM users_field_data ufd
+      WHERE FROM_UNIXTIME(ufd.created, '%Y-%m') <= source.created
+    ) AS total
+    FROM (
+      -- Users.
+      SELECT
+        FROM_UNIXTIME(ufd.created, '%Y-%m') AS created,
+        NULL AS uid
+      FROM users_field_data ufd
+      WHERE ufd.uid > 0
+      GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
+
+      -- Nodes.
+      UNION ALL
+      SELECT
+        FROM_UNIXTIME(nfd.created, '%Y-%m') AS created,
+        nfd.uid AS uid
+      FROM node_field_data nfd
+      GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
+
+      -- Comments.
+      UNION ALL
+      SELECT
+        FROM_UNIXTIME(cfd.created, '%Y-%m') AS created,
+        cfd.uid AS uid
+      FROM comment_field_data cfd
+      GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
+
+      -- Posts.
+      UNION ALL
+      SELECT
+        FROM_UNIXTIME(pfd.created, '%Y-%m') AS created,
+        pfd.user_id AS uid
+      FROM post_field_data pfd
+      GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
+
+      -- Event enrollment.
+      UNION ALL
+      SELECT
+        FROM_UNIXTIME(eefd.created, '%Y-%m') AS created,
+        eefd.user_id AS uid
+      FROM event_enrollment_field_data eefd
+      GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
+    ) AS source
+
+    GROUP BY created
+    ORDER BY created ASC;
+  field_kpi_data_formatter:
+    -
+      value: raw_kpi_data_formatter
+  field_kpi_visualization: morris_line_graph_kpi_visualization
+  field_kpi_chart_labels:
+    -
+      value: 'Active users'
+    -
+      value: 'All users'
