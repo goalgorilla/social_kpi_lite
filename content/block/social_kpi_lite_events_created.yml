@@ -1,4 +1,4 @@
-region: content
+region: sidebar_first
 id: social_kpi_lite_events_created
 theme: null
 plugin: block_content:94255f19-275e-4f61-8305-01fa30b0fadc

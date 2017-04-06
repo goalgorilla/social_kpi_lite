@@ -1,4 +1,4 @@
-region: content_top
+region: content
 id: social_kpi_lite_users_active
 theme: null
 plugin: block_content:04538321-c195-4327-bae0-e82365382836
