@@ -1,10 +1,10 @@
 values:
   type: kpi_analytics
-  info: 'Show number of posted comments in a bar graph as KPI Analytics'
+  info: 'KPI Analytics: Activity in comments'
   uuid: 86ad925a-0513-4881-bfe4-6a9be1a01550
 fields:
   body:
-    value: '<h3>Activity in comments</p>'
+    value: ''
     format: full_html
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >

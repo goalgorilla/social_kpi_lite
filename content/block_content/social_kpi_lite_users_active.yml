@@ -1,10 +1,10 @@
 values:
   type: kpi_analytics
-  info: 'Show all active users in a line graph as KPI Analytics'
+  info: 'KPI Analytics: Active users'
   uuid: 04538321-c195-4327-bae0-e82365382836
 fields:
   body:
-    value: '<h3>Active users on the platform that participated in the community</p>'
+    value: 'Active users on the platform that participated in the community'
     format: full_html
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >

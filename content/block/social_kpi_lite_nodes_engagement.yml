@@ -11,7 +11,7 @@ visibility:
     context_mapping: {}
 settings:
   id: social_kpi_lite_nodes_engagement
-  label: ''
+  label: 'Nodes engagement'
   provider: block_content
-  label_display: false
+  label_display: visible
   views_label: ''
