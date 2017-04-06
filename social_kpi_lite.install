@@ -24,8 +24,8 @@ function _social_kpi_lite_create_blocks($blocks) {
   $block_path = "{$path}/content/block";
 
   foreach ($blocks as $block_id) {
-    /** @var \Drupal\social_kpi_lite\BlockContentCreator $block_content_creator */
-    $block_content_creator = \Drupal::service('social_kpi_lite.block_content_creator');
+    /** @var \Drupal\kpi_analytics\BlockContentCreator $block_content_creator */
+    $block_content_creator = \Drupal::service('kpi_analytics.block_content_creator');
     $block_content_creator->setSource($block_content_path, $block_id);
 
     if ($block_content_creator->create()) {

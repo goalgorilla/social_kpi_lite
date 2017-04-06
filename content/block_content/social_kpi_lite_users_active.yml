@@ -70,3 +70,8 @@ fields:
       value: 'Active users'
     -
       value: 'All users'
+  field_kpi_chart_colors:
+    -
+      value: '#29abe2'
+    -
+      value: '#ffc142'
