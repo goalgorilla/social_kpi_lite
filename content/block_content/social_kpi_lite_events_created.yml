@@ -38,3 +38,8 @@ fields:
       value: 'Events by CM'
     -
       value: 'Events by community'
+  field_kpi_chart_colors:
+    -
+      value: '#29abe2'
+    -
+      value: '#ffc142'

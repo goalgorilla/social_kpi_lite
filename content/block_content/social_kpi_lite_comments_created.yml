@@ -37,3 +37,8 @@ fields:
       value: 'Comment by CM'
     -
       value: 'Comment by community'
+  field_kpi_chart_colors:
+    -
+      value: '#29abe2'
+    -
+      value: '#ffc142'
