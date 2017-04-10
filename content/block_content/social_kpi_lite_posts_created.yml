@@ -3,9 +3,6 @@ values:
   info: 'KPI Analytics: Activity in posts'
   uuid: b2b84dd7-a220-4837-8e14-aac24d677cf6
 fields:
-  body:
-    value: ''
-    format: full_html
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >
     SELECT created, count_cm, count_lu FROM

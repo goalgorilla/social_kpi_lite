@@ -3,9 +3,6 @@ values:
   info: 'KPI Analytics: Nodes engagement'
   uuid: 1f2f4ffe-7095-4af3-98eb-71c7c09e4606
 fields:
-  body:
-    value: ''
-    format: full_html
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >
     SELECT created, SUM(count_votes) AS count_votes, SUM(count_comments) AS count_comments
