@@ -3,9 +3,6 @@ values:
   info: 'KPI Analytics: Activity in events'
   uuid: 94255f19-275e-4f61-8305-01fa30b0fadc
 fields:
-  body:
-    value: ''
-    format: full_html
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >
     SELECT created, count_cm, count_lu FROM
