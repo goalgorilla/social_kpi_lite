@@ -1,6 +1,11 @@
 <?php
 
 /**
+ * @file
+ * Social KPI lite.
+ */
+
+/**
  * Implements hook_install().
  */
 function social_kpi_lite_install() {
@@ -17,7 +22,7 @@ function social_kpi_lite_uninstall() {
 }
 
 /**
- *
+ * For getting block listing.
  */
 function _social_kpi_lite_get_blocks_list() {
   return [
