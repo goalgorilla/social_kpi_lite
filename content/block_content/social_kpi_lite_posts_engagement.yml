@@ -58,3 +58,9 @@ fields:
       value: '#29abe2'
     -
       value: '#ffc142'
+  body:
+    -
+      format: basic_html
+      value: >
+        Distinguish categories of engagements on posts. Number of likes versus the number of comments.
+

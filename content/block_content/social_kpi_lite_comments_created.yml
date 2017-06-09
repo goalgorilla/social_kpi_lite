@@ -31,11 +31,16 @@ fields:
   field_kpi_visualization: morris_bar_graph_kpi_visualization
   field_kpi_chart_labels:
     -
-      value: 'Comment by CM'
+      value: 'Comments by Community Managers'
     -
-      value: 'Comment by community'
+      value: 'Comments by Community'
   field_kpi_chart_colors:
     -
       value: '#29abe2'
     -
       value: '#ffc142'
+  body:
+    -
+      format: basic_html
+      value: >
+        Distinguish comments created by content managers and site managers versus comments created by the community (e.g. users without a special role in the community).

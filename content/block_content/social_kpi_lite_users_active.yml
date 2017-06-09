@@ -9,7 +9,7 @@ fields:
     (
       SELECT COUNT(ufd.uid)
       FROM users_field_data ufd
-      WHERE FROM_UNIXTIME(ufd.created, '%Y-%m') <= source.created AND FROM_UNIXTIME(ufd.created, '%Y') = YEAR(CURDATE())
+      WHERE FROM_UNIXTIME(ufd.created, '%Y-%m') <= source.created AND FROM_UNIXTIME(ufd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
     ) AS total
     FROM (
       -- Users.
@@ -17,7 +17,7 @@ fields:
           FROM_UNIXTIME(ufd.created, '%Y-%m') AS created,
           NULL AS uid
       FROM users_field_data ufd
-      WHERE ufd.uid > 0 AND FROM_UNIXTIME(ufd.created, '%Y') = YEAR(CURDATE())
+      WHERE ufd.uid > 0 AND FROM_UNIXTIME(ufd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
       GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
 
       -- Nodes.
@@ -26,7 +26,7 @@ fields:
           FROM_UNIXTIME(nfd.created, '%Y-%m') AS created,
           nfd.uid AS uid
       FROM node_field_data nfd
-      WHERE FROM_UNIXTIME(nfd.created, '%Y') = YEAR(CURDATE())
+      WHERE FROM_UNIXTIME(nfd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
       GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
 
       -- Comments.
@@ -35,7 +35,7 @@ fields:
           FROM_UNIXTIME(cfd.created, '%Y-%m') AS created,
           cfd.uid AS uid
       FROM comment_field_data cfd
-      WHERE FROM_UNIXTIME(cfd.created, '%Y') = YEAR(CURDATE())
+      WHERE FROM_UNIXTIME(cfd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
       GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
 
       -- Posts.
@@ -44,7 +44,7 @@ fields:
           FROM_UNIXTIME(pfd.created, '%Y-%m') AS created,
           pfd.user_id AS uid
       FROM post_field_data pfd
-      WHERE FROM_UNIXTIME(pfd.created, '%Y') = YEAR(CURDATE())
+      WHERE FROM_UNIXTIME(pfd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
       GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
 
       -- Event enrollment.
@@ -53,7 +53,7 @@ fields:
           FROM_UNIXTIME(eefd.created, '%Y-%m') AS created,
           eefd.user_id AS uid
       FROM event_enrollment_field_data eefd
-      WHERE FROM_UNIXTIME(eefd.created, '%Y') = YEAR(CURDATE())
+      WHERE FROM_UNIXTIME(eefd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
       GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
     ) AS source
     GROUP BY created
@@ -72,3 +72,8 @@ fields:
       value: '#29abe2'
     -
       value: '#ffc142'
+  body:
+    -
+      format: basic_html
+      value: >
+        A user is considered active in a month when: he created his account; created a topic or event; created a post; commented on topics; events or posts; or enrolled to an event.

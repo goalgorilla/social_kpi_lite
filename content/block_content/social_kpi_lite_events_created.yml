@@ -32,7 +32,7 @@ fields:
   field_kpi_visualization: morris_bar_graph_kpi_visualization
   field_kpi_chart_labels:
     -
-      value: 'Events by CM'
+      value: 'Events by Community Managers'
     -
       value: 'Events by community'
   field_kpi_chart_colors:
@@ -40,3 +40,8 @@ fields:
       value: '#29abe2'
     -
       value: '#ffc142'
+  body:
+    -
+      format: basic_html
+      value: >
+        Distinguish events created by content managers and site managers versus events created by the community (e.g. users without a special role in the community).
