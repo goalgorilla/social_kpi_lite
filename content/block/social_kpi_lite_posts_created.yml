@@ -11,7 +11,7 @@ visibility:
     context_mapping: {}
 settings:
   id: social_kpi_lite_posts_created
-  label: 'Activity in posts'
+  label: 'Posts created'
   provider: block_content
   label_display: visible
   views_label: ''
