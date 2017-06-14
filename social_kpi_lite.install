@@ -32,6 +32,7 @@ function _social_kpi_lite_get_blocks_list() {
     'social_kpi_lite_comments_created',
     'social_kpi_lite_posts_created',
     'social_kpi_lite_posts_engagement',
+    'social_kpi_lite_groups_created',
   ];
 }
 
