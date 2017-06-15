@@ -2,7 +2,7 @@ region: sidebar_first
 id: social_kpi_lite_posts_created
 theme: null
 plugin: block_content:b2b84dd7-a220-4837-8e14-aac24d677cf6
-weight: null
+weight: -50
 visibility:
   request_path:
     id: request_path

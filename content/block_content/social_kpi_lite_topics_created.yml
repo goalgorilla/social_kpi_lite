@@ -5,19 +5,16 @@ values:
 fields:
   field_kpi_datasource: drupal_kpi_datasource
   field_kpi_query: >
-    SELECT created, count_cm, count_lu, count_sm FROM
+    SELECT created, count_cm, count_lu FROM
     (
     	SELECT
     		FROM_UNIXTIME(nfd.created, '%Y-%m') AS created,
     		COUNT(ur.entity_id) AS count_cm,
-    		(COUNT(nfd.nid) - COUNT(ur.entity_id) - COUNT(ur3.entity_id)) AS count_lu,
-    		COUNT(ur3.entity_id) AS count_sm
+    		(COUNT(nfd.nid) - COUNT(ur.entity_id)) AS count_lu
 
     	FROM node_field_data nfd
 
-    	LEFT OUTER JOIN user__roles ur ON ur.entity_id = nfd.uid AND ur.roles_target_id = 'contentmanager'
-    	LEFT OUTER JOIN user__roles ur2 ON ur2.entity_id = nfd.uid AND ur2.roles_target_id NOT IN ('contentmanager', 'sitemanager')
-    	LEFT OUTER JOIN user__roles ur3 ON ur3.entity_id = nfd.uid AND ur3.roles_target_id = 'sitemanager'
+    	LEFT OUTER JOIN user__roles ur ON ur.entity_id = nfd.uid AND ur.roles_target_id IN ('contentmanager', 'sitemanager')
 
     	WHERE FROM_UNIXTIME(nfd.created, '%Y-%m')
     		BETWEEN
@@ -25,9 +22,10 @@ fields:
     		AND
     			FROM_UNIXTIME(UNIX_TIMESTAMP(CURDATE()), '%Y-%m')
     		AND nfd.type = 'topic'
+    		AND nfd.status = 1
     	GROUP BY FROM_UNIXTIME(nfd.created, '%Y-%m')
     ) AS source
-    GROUP BY created, count_cm, count_lu, count_sm;
+    GROUP BY created, count_cm, count_lu;
   field_kpi_data_formatter:
     -
       value: three_months_timeline_kpi_data_formatter
@@ -37,15 +35,11 @@ fields:
       value: 'Topics by Community Managers'
     -
       value: 'Topics by Community'
-    -
-      value: 'Topics by Site Managers'
   field_kpi_chart_colors:
     -
       value: '#29abe2'
     -
       value: '#ffc142'
-    -
-      value: '#4caf50'
   body:
     -
       format: basic_html

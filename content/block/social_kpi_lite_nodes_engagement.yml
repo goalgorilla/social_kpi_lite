@@ -2,7 +2,7 @@ region: content
 id: social_kpi_lite_nodes_engagement
 theme: null
 plugin: block_content:1f2f4ffe-7095-4af3-98eb-71c7c09e4606
-weight: null
+weight: -75
 visibility:
   request_path:
     id: request_path
