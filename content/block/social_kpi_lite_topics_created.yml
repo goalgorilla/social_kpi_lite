@@ -1,8 +1,8 @@
-region: sidebar_first
+region: content
 id: social_kpi_lite_topics_created
 theme: null
 plugin: block_content:41e6ce9a-de5c-4d62-8f27-24963eb92e6c
-weight: -100
+weight: -50
 visibility:
   request_path:
     id: request_path

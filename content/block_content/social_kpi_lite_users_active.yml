@@ -9,7 +9,7 @@ fields:
     (
       SELECT COUNT(ufd.uid)
       FROM users_field_data ufd
-      WHERE FROM_UNIXTIME(ufd.created, '%Y-%m') <= source.created AND FROM_UNIXTIME(ufd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
+      WHERE FROM_UNIXTIME(ufd.created, '%Y-%m') <= source.created
     ) AS total
     FROM (
       -- Users.

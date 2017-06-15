@@ -1,8 +1,8 @@
-region: content
+region: title
 id: social_kpi_lite_users_active
 theme: null
 plugin: block_content:04538321-c195-4327-bae0-e82365382836
-weight: -100
+weight: -30
 visibility:
   request_path:
     id: request_path
