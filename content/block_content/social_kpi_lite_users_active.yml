@@ -1,6 +1,6 @@
 values:
   type: kpi_analytics
-  info: 'KPI Analytics: Active users'
+  info: 'KPI Analytics: user activity'
   uuid: 04538321-c195-4327-bae0-e82365382836
 fields:
   field_kpi_datasource: drupal_kpi_datasource
@@ -64,7 +64,7 @@ fields:
   field_kpi_visualization: morris_line_graph_kpi_visualization
   field_kpi_chart_labels:
     -
-      value: 'Active users'
+      value: 'Contributing users'
     -
       value: 'All users'
   field_kpi_chart_colors:
@@ -76,4 +76,4 @@ fields:
     -
       format: basic_html
       value: >
-        A user is considered active in a month when: he created his account; created a topic or event; created a post; commented on topics; events or posts; or enrolled to an event.
+        A user is considered a contributing user when the user: created a topic or event; created a post; commented on topics; events or posts; or enrolled to an event in a given month.

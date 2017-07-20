@@ -11,7 +11,7 @@ visibility:
     context_mapping: {}
 settings:
   id: social_kpi_lite_users_active
-  label: 'Active users'
+  label: 'Users activity'
   provider: block_content
   label_display: visible
   views_label: ''
