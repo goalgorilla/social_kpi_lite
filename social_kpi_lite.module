@@ -6,6 +6,9 @@
  */
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Session\AccountInterface;
+use Drupal\Core\Access\AccessResult;
+use Drupal\block\Entity\Block;
 
 /**
  * Implements hook_help().
@@ -20,5 +23,15 @@ function social_kpi_lite_help($route_name, RouteMatchInterface $route_match) {
       return $output;
 
     default:
+  }
+}
+
+/**
+ * Implements hook_block_access().
+ */
+function social_kpi_lite_block_access(Block $block, $operation, AccountInterface $account) {
+  if (strpos($block->id(), 'social_kpi_lite') !== FALSE) {
+    // Only grant access to users with the access to analytics reports page.
+    return AccessResult::forbiddenIf(!$account->hasPermission('access kpi analytics reports'))->addCacheContexts(['user.permissions']);
   }
 }
