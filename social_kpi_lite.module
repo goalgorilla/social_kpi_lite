@@ -34,4 +34,5 @@ function social_kpi_lite_block_access(Block $block, $operation, AccountInterface
     // Only grant access to users with the access to analytics reports page.
     return AccessResult::forbiddenIf(!$account->hasPermission('access kpi analytics reports'))->addCacheContexts(['user.permissions']);
   }
+  return AccessResult::neutral();
 }
