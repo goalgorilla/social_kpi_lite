@@ -95,7 +95,33 @@ function _social_kpi_lite_delete_blocks($blocks) {
  * Update Social KPI Lite blocks.
  */
 function social_kpi_lite_update_8001() {
-  $blocks = _social_kpi_lite_get_blocks_list();
-  _social_kpi_lite_update_blocks($blocks);
+  // Update existing blocks.
+  $blocks_update = [
+    'social_kpi_lite_events_created',
+    'social_kpi_lite_comments_created',
+    'social_kpi_lite_posts_created',
+    'social_kpi_lite_posts_engagement',
+    'social_kpi_lite_topics_created',
+    'social_kpi_lite_groups_created',
+  ];
+  _social_kpi_lite_update_blocks($blocks_update);
+
+  // Create missing blocks.
+  $blocks_create = [
+    'social_kpi_lite_events_engagement',
+    'social_kpi_lite_topics_engagement',
+  ];
+  _social_kpi_lite_create_blocks($blocks_create);
+
+  // Delete nodes engagement block and block_content.
+  $block_id = 'social_kpi_lite_nodes_engagement';
+  $block_uuid = '1f2f4ffe-7095-4af3-98eb-71c7c09e4606';
+  $entity_type_manager = \Drupal::entityTypeManager();
+  if ($block = $entity_type_manager->getStorage('block')->load($block_id)) {
+    $block->delete();
+  }
+  if ($block_content = $entity_type_manager->getStorage('block_content')->loadByProperties(['uuid' => $block_uuid])) {
+    current($block_content)->delete();
+  }
 }
 
