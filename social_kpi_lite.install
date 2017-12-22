@@ -57,6 +57,21 @@ function _social_kpi_lite_create_blocks($blocks) {
 }
 
 /**
+ * Update block content.
+ */
+function _social_kpi_lite_update_blocks($blocks) {
+  $path = drupal_get_path('module', 'social_kpi_lite');
+  $block_content_path = "{$path}/content/block_content";
+  /** @var \Drupal\kpi_analytics\BlockContentCreator $block_content_creator */
+  $block_content_creator = \Drupal::service('kpi_analytics.block_content_creator');
+
+  foreach ($blocks as $block_id) {
+    $block_content_creator->setSource($block_content_path, $block_id);
+    $block_content_creator->update();
+  }
+}
+
+/**
  * Delete block content.
  */
 function _social_kpi_lite_delete_blocks($blocks) {
@@ -75,3 +90,12 @@ function _social_kpi_lite_delete_blocks($blocks) {
     $block_content_creator->delete();
   }
 }
+
+/**
+ * Update Social KPI Lite blocks.
+ */
+function social_kpi_lite_update_8001() {
+  $blocks = _social_kpi_lite_get_blocks_list();
+  _social_kpi_lite_update_blocks($blocks);
+}
+

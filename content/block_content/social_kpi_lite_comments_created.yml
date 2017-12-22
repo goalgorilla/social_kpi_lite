@@ -17,7 +17,7 @@ fields:
         LEFT OUTER JOIN user__roles ur ON ur.entity_id = cfd.uid AND ur.roles_target_id IN ('contentmanager', 'sitemanager')
         WHERE FROM_UNIXTIME(cfd.created, '%Y-%m')
             BETWEEN
-                FROM_UNIXTIME(UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 2 MONTH)), '%Y-%m')
+                FROM_UNIXTIME(UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 3 MONTH)), '%Y-%m')
             AND
                 FROM_UNIXTIME(UNIX_TIMESTAMP(CURDATE()), '%Y-%m')
             AND cfd.status = 1
@@ -36,9 +36,9 @@ fields:
       value: 'Comments by Community'
   field_kpi_chart_colors:
     -
-      value: '#29abe2'
+      value: '#398eb2'
     -
-      value: '#ffc142'
+      value: '#29abe2'
   body:
     -
       format: basic_html

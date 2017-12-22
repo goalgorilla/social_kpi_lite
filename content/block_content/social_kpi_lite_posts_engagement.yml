@@ -16,7 +16,7 @@ fields:
     	WHERE
     		FROM_UNIXTIME(vv.timestamp, '%Y-%m')
     		BETWEEN
-    			FROM_UNIXTIME(UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 2 MONTH)), '%Y-%m')
+    			FROM_UNIXTIME(UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 3 MONTH)), '%Y-%m')
     		AND
     			FROM_UNIXTIME(UNIX_TIMESTAMP(CURDATE()), '%Y-%m')
     		AND
@@ -35,7 +35,7 @@ fields:
     	WHERE
     		FROM_UNIXTIME(cfd.created, '%Y-%m')
     		BETWEEN
-    			FROM_UNIXTIME(UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 2 MONTH)), '%Y-%m')
+    			FROM_UNIXTIME(UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 3 MONTH)), '%Y-%m')
     		AND
     			FROM_UNIXTIME(UNIX_TIMESTAMP(CURDATE()), '%Y-%m')
     		AND
@@ -55,9 +55,9 @@ fields:
       value: 'Comments on post'
   field_kpi_chart_colors:
     -
-      value: '#29abe2'
-    -
       value: '#ffc142'
+    -
+      value: '#fe8a71'
   body:
     -
       format: basic_html
