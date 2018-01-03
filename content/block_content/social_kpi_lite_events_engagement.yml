@@ -90,4 +90,4 @@ fields:
     -
       format: basic_html
       value: >
-        Engagements on events. Number of likes, number of comments and number of enrollments.
+        Distinguish between the types of engagement on events.

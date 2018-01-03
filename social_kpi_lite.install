@@ -28,12 +28,13 @@ function _social_kpi_lite_get_blocks_list() {
   return [
     'social_kpi_lite_users_active',
     'social_kpi_lite_events_created',
-    'social_kpi_lite_nodes_engagement',
     'social_kpi_lite_comments_created',
     'social_kpi_lite_posts_created',
     'social_kpi_lite_posts_engagement',
     'social_kpi_lite_topics_created',
     'social_kpi_lite_groups_created',
+    'social_kpi_lite_events_engagement',
+    'social_kpi_lite_topics_engagement',6
   ];
 }
 

@@ -67,4 +67,4 @@ fields:
     -
       format: basic_html
       value: >
-        Engagements on topics. Number of likes and the number of comments.
+        Distinguish between the types of engagement on topics.
