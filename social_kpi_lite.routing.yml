@@ -7,3 +7,4 @@ social_kpi_lite.analytics:
     _permission: 'access kpi analytics reports'
   options:
     _admin_route: FALSE
+    _no_big_pipe: TRUE
