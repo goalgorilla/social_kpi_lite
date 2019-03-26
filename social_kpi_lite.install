@@ -126,3 +126,13 @@ function social_kpi_lite_update_8001() {
   }
 }
 
+/**
+ * Enable User login analytics data sub module.
+ */
+function social_kpi_lite_update_8002() {
+  $modules = [
+    'social_kpi_lite_user_login',
+  ];
+
+  \Drupal::service('module_installer')->install($modules);
+}
