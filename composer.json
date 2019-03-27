@@ -1,0 +1,10 @@
+{
+    "name": "drupal/social_kpi_lite",
+    "type": "drupal-module",
+    "description": "Social KPI (Lite).",
+    "homepage": "http://drupal.org/project/social_kpi_lite",
+    "require": {
+        "drupal/login_tracker": "^1.0.0"
+    },
+    "minimum-stability": "dev"
+}
