@@ -136,3 +136,13 @@ function social_kpi_lite_update_8002() {
 
   \Drupal::service('module_installer')->install($modules);
 }
+
+/**
+ * Update users block to exclude blocked users from the totals.
+ */
+function social_kpi_lite_update_8003() {
+  $blocks_update = [
+    'social_kpi_lite_users_active',
+  ];
+  _social_kpi_lite_update_blocks($blocks_update);
+}

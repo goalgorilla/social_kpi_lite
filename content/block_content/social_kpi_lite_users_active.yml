@@ -9,7 +9,7 @@ fields:
     (
       SELECT COUNT(ufd.uid)
       FROM users_field_data ufd
-      WHERE FROM_UNIXTIME(ufd.created, '%Y-%m') <= source.created
+      WHERE ufd.status = 1 AND FROM_UNIXTIME(ufd.created, '%Y-%m') <= source.created
     ) AS total
     FROM (
       -- Users.
@@ -17,7 +17,7 @@ fields:
           FROM_UNIXTIME(ufd.created, '%Y-%m') AS created,
           NULL AS uid
       FROM users_field_data ufd
-      WHERE ufd.uid > 0 AND FROM_UNIXTIME(ufd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
+      WHERE ufd.uid > 0 AND ufd.status = 1 AND FROM_UNIXTIME(ufd.created, '%Y') >= YEAR(DATE_SUB(CURDATE(), INTERVAL 1 YEAR))
       GROUP BY uid, FROM_UNIXTIME(created, '%Y-%m')
 
       -- Nodes.
