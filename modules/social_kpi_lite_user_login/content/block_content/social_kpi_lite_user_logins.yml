@@ -9,7 +9,7 @@ fields:
         (
           SELECT COUNT(lt.uid)
           FROM login_tracker lt
-          WHERE FROM_UNIXTIME(lt.login_timestamp, '%Y-%m') <= source.created
+          WHERE FROM_UNIXTIME(lt.login_timestamp, '%Y-%m') = source.created
         ) AS total_logins
         FROM (
             SELECT
