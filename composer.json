@@ -4,7 +4,8 @@
     "description": "Social KPI (Lite).",
     "homepage": "http://drupal.org/project/social_kpi_lite",
     "require": {
-        "drupal/login_tracker": "^1.0.0"
+        "drupal/login_tracker": "^1.0.0",
+        "drupal/kpi_analytics": "^1.0@alpha"
     },
     "minimum-stability": "dev"
 }
