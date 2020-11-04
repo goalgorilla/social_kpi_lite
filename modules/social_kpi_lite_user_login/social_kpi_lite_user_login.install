@@ -68,3 +68,17 @@ function _social_kpi_lite_user_login_delete_blocks($blocks) {
     $block_content_creator->delete();
   }
 }
+
+/**
+ * Update User logins block content with the latest changes in yml file.
+ */
+function social_kpi_lite_user_login_update_8901() {
+  $path = drupal_get_path('module', 'social_kpi_lite_user_login');
+  $block_content_path = "{$path}/content/block_content";
+  $block_id = 'social_kpi_lite_user_logins';
+  /** @var \Drupal\kpi_analytics\BlockContentCreator $block_content_creator */
+  $block_content_creator = \Drupal::service('kpi_analytics.block_content_creator');
+
+  $block_content_creator->setSource($block_content_path, $block_id);
+  $block_content_creator->update();
+}
