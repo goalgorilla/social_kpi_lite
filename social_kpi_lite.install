@@ -146,3 +146,13 @@ function social_kpi_lite_update_8003() {
   ];
   _social_kpi_lite_update_blocks($blocks_update);
 }
+
+/**
+ * Update groups created block to exclude challenges.
+ */
+function social_kpi_lite_update_8004() {
+  $blocks_update = [
+    'social_kpi_lite_groups_created',
+  ];
+  _social_kpi_lite_update_blocks($blocks_update);
+}
