@@ -21,6 +21,8 @@ fields:
                 FROM_UNIXTIME(UNIX_TIMESTAMP(DATE_SUB(CURDATE(), INTERVAL 3 MONTH)), '%Y-%m')
             AND
                 FROM_UNIXTIME(UNIX_TIMESTAMP(CURDATE()), '%Y-%m')
+            AND
+                gfd.type NOT IN ('challenge', 'cc', 'sc')
         GROUP BY FROM_UNIXTIME(gfd.created, '%Y-%m')
     ) AS source
     GROUP BY created, count_cm, count_lu;
